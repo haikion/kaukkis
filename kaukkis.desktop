@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Kaukkis
+Icon=kaukkis
+Exec=/usr/bin/kaukkis
