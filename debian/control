@@ -1,0 +1,43 @@
+Source: kaukkis
+Section: user/utilities
+Priority: optional
+Maintainer: Niko Häikiö <haikion@github>
+Build-Depends: debhelper7 (>= 7),
+               libqt4-dev,
+               g++-4.6
+Standards-Version: 3.7.2
+
+Package: kaukkis
+Architecture: armel
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Kaukkis is a remote controller application for Maemo.
+XB-Maemo-Icon-26:
+ iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsT
+ AAALEwEAmpwYAAAAB3RJTUUH3wERDiIgbDtW8gAABG9JREFUeNrlmy9MHEEU
+ xofSBEETmiCuCU1OIiquyQkEoqKCJggETRCIE4iKEzRBXB2iAoFoq06cQCAq
+ EBUIBKICcQKBQLRJBQKBoEnFCZrQ5FfRt83LZHZm9/bgZu9eQnLczM7b79t5
+ f3fOmJIKsM8/uQG6wA5QN+MiwBVuOQVWxoGAl8AecCK7wJYuUBuX3TAFrACH
+ Fgm3QNOMkwCL8vS1dIDJcSJhEmjJDkjkYKxIECKWgJ7eCbE/tQWgIfZcCcyf
+ k7mLwFTAJDQJzRjBLwM/HA6sA0ynXKPn/wI+ALOenXCr1q3FBH4Tv5y7doPE
+ e1uugeUUPS0dImMF/1m29ZaV6HyzSQBmgFVgV4DrnfMmxcR0dFiJDfymNV4R
+ 4KkkWGR0LBKWU/zB/4wxWvD9kOBY99rlE6xkqR4t+AIk6J3wwTG+osZ3ogZf
+ wByuVXSYcqTNN/fuDPsF3ycJu2reomP8JCmlSwE+LwkSHRJpOMb3ksGYHN40
+ UJW/ySIkiBmcythcSin9C9gbdqirAW3gwpEFdiV5qRR1jNGFOmBWkp4s0gO2
+ SkVCAPw8cOlIYQ8kn28DXx1dni92XRAlCQHwVSvFvQDWXDYvu+S9RcSXqHdC
+ BpvXufgJMJNhzZpFWpzmkAF8Q42dpZW5HhJulE/I4hjP8+i481Bnla/1PnS8
+ V9e3MobITizgq2r8OGWdKtAE1l0dHvEJwRRWSLhS4bQyVPCOzKzpGK9bbauz
+ FBK+KmC+ZGlLrbXqw/CgCHhjzEf11duJiYlPKdOfqM/fHePvjDGP1P/PjTGv
+ HfOSax8aY556bu+n+vxo4ATkBG/fxB/H+OOM3/3OeIuvAoTfb2Ejdp3IumP8
+ jSP7qzrmHag50xnu78dA3wUUqOdrIc8sJBwLyHpKTy+p8y8y3t9yTPX8pWpS
+ zPShf03pbt9VyX1n9Tyw3W98lvJWV4y1UoF3tKrymM+06uAAfI4OvPTZNqR+
+ f+ZZb8l6YdnxmYPkB2dq/qXu9MYE/sxqZrwMrHtrvdbqSKR4Id2apjhELVfA
+ fHTb3sryEjkKrL9kmUNIujosRmXzVozP/O5NfMK2ozlin/dpRO3wpPiwn2Yz
+ p96aENmS7b+akgjF6e2lzbUPHLna0DFFI+PJwrLa/KzvQEIZwS9YXnnTA/xY
+ HU7cLD14UXAY6rTIvLbDSS1k1NEUT37kC5H3Dl6UJF2W88C8roOARob1G46X
+ Hs+iAC+KEtkPzOv0swPkqdvSigK8KOupHn3ondypeorbGdffdxCwEQV4Ubjn
+ KzMd8+fylLMSIq9D/b6hgFfd2J7vVMUAdFQk0VmNCrxSvjgIEtRBx4Wc1w0P
+ /KBIsBoeeer94YMvSoIUNrcWkJtQxhgV+CIkiGN0yWypwBckwT66elxK8P2S
+ IJ6+Ixlj23NwOX7wg44OpQR/ByGyfOAHGCLLC34AIbL84As4xtEBn5eEkQTv
+ IaGtS2nr5ymjBd5DwoXU/ucjD95DAqHf7owiCVVpqvRUEXSYtyQelvwFhmpA
+ 8rsjXYoAAAAASUVORK5CYII=
