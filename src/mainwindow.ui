@@ -65,6 +65,11 @@
     <string>Plugin Settings</string>
    </property>
   </action>
+  <action name="actionAutoOrientation">
+   <property name="text">
+    <string>Auto Orientation</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

@@ -8,7 +8,7 @@ to control X-window-system through network.
 ###Linux
 ####Requirements
 * g++-4.6 or newer
-* qt4
+* Qt4
 
 ####Compliation
 ```

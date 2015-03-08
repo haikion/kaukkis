@@ -9,8 +9,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-
-
+#PATH += /usr/binutils2.22/bin
 
 CFLAGS = -Wall -g
 
@@ -34,6 +33,7 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
+	qmake
 	$(MAKE)
 	#docbook-to-man debian/kaukkis.sgml > kaukkis.1
 

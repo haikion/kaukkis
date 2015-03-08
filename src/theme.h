@@ -8,7 +8,6 @@
 #include <QString>
 #include <QPixmap>
 #include <map>
-#include <memory>
 #include "buttontheme.h"
 
 
@@ -29,10 +28,9 @@ private:
     static const QString PRESSED_FILE;
     //File name for given button
     static const QString RELEASED_FILE;
-    //Holds path to the theme directory.
-    //TODO: Replace with themes directory and use file handling to
-    //load all of the themes.
-    static const QString THEME_DIR;
+    //Holds path to the possible themes directories.
+    //TODO: implement theme chooser to allow multiple themes.
+    static const std::vector<QString> THEME_DIRS;
 
     //Determines the background image for the whole remote.
     QPixmap backgroundImage_;

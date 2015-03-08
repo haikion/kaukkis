@@ -32,13 +32,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QCoreApplication::setOrganizationName("org");
     QCoreApplication::setApplicationName("kaukkis");
-    if ( QSettings().value("portrait", false).toBool() )
+
+    if ( QSettings().value("orientation").toString() == "landscape" )
+    {
+        landscapeMode();
+    }
+    if ( QSettings().value("orientation").toString() == "portrait")
     {
         portraitMode();
     }
     else
     {
-        landscapeMode();
+        autoOrientation();
     }
 }
 
@@ -52,14 +57,26 @@ void MainWindow::showAbout()
     QMessageBox::about(this, "Authors", "Niko Häikiö (haikion@GitHub)");
 }
 
+void MainWindow::autoOrientation()
+{
+    qDebug() << "MainWindow: autoOrientation() called";
+
+    ui->menubar->removeAction(ui->actionAutoOrientation);
+    ui->menubar->addAction(ui->actionLandscape);
+    ui->menubar->addAction(ui->actionPortrait);
+    setAttribute(QtCompatibility::WA_AutoOrientation);
+    QSettings().setValue("orientation", "auto");
+}
+
 void MainWindow::portraitMode()
 {
     qDebug() << "MainWindow: PortraitMode() called";
 
     ui->menubar->removeAction(ui->actionPortrait);
     ui->menubar->addAction(ui->actionLandscape);
+    ui->menubar->addAction(ui->actionAutoOrientation);
     setAttribute(QtCompatibility::WA_LockPortraitOrientation);
-    QSettings().setValue("portrait", true);
+    QSettings().setValue("orientation", "portrait");
 }
 
 void MainWindow::landscapeMode()
@@ -68,8 +85,9 @@ void MainWindow::landscapeMode()
 
     ui->menubar->removeAction(ui->actionLandscape);
     ui->menubar->addAction(ui->actionPortrait);
+    ui->menubar->addAction(ui->actionAutoOrientation);
     setAttribute(QtCompatibility::WA_LockLandscapeOrientation);
-    QSettings().setValue("portrait", false);
+    QSettings().setValue("orientation", "landscape");
 }
 std::list<IRemoteOutput*> MainWindow::remoteOutputs() const
 {
@@ -84,6 +102,7 @@ void MainWindow::setRemoteOutputs(const std::list<IRemoteOutput*>& remoteOutputs
 
 void MainWindow::addUseModeActions()
 {
+    ui->graphicsView->setBackgroundBrush(QBrush(Qt::NoBrush));
     ui->menubar->addAction(ui->actionEdit);
     ui->menubar->removeAction(ui->actionAddButton);
     ui->menubar->removeAction(ui->actionSave);
@@ -98,6 +117,7 @@ void MainWindow::useMode()
 
 void MainWindow::editMode()
 {
+    ui->graphicsView->setBackgroundBrush(QBrush(Qt::darkYellow, Qt::SolidPattern));
     ui->menubar->removeAction(ui->actionEdit);
     ui->menubar->addAction(ui->actionAddButton);
     ui->menubar->addAction(ui->actionSave);
@@ -176,12 +196,13 @@ void MainWindow::setupHildonMenu()
     //About action is always visible
     ui->menubar->addAction(ui->actionAbout);
     //Connect actions
+    connect(ui->actionPortrait, SIGNAL(triggered()), this, SLOT(portraitMode()));
+    connect(ui->actionLandscape, SIGNAL(triggered()), this, SLOT(landscapeMode()));
     connect(ui->actionEdit, SIGNAL(triggered()), this, SLOT(editMode()));
     connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(useMode()));
     connect(ui->actionAddButton, SIGNAL(triggered()), activeRemote(), SLOT(addButton()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
-    connect(ui->actionLandscape, SIGNAL(triggered()), this, SLOT(landscapeMode()));
-    connect(ui->actionPortrait, SIGNAL(triggered()), this, SLOT(portraitMode()));
+    connect(ui->actionAutoOrientation, SIGNAL(triggered()), this, SLOT(autoOrientation()));
     connect(ui->actionPlugins, SIGNAL(triggered()), pluginsDialog_, SLOT(show()));
     //Use mode is the default mode
     addUseModeActions();

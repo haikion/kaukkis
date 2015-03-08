@@ -3,6 +3,7 @@
 #include <QByteArray>
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QNetworkConfigurationManager>
 #include "message.h"
 #include "networkoutput.h"
 #include "ui_networkoutputdialog.h"
@@ -77,10 +78,18 @@ void NetworkOutput::sendKeyPress(int keyInt)
     qDebug() << "NetworkOutput: Sending key press: " << QKeySequence(key).toString();
 
     Message newMsg(Message::Action::KEY_PRESS, key);
+    if ( ! QNetworkConfigurationManager().isOnline() )
+    {
+        qDebug() << "NetworkOutput: No network connection.";
+        //This will open connection selection menu in Maemo.
+        client_.connectToHost();
+        return;
+    }
+
     if ( ! client_.sendMessage(newMsg) )
     {
         QMessageBox msg;
-        msg.setText("NetworkOutput: Unable to send network message.");
+        msg.setText("NetworkOutput: Unable to send network message");
         msg.exec();
     }
 }
@@ -89,6 +98,10 @@ void NetworkOutput::sendKeyPress(int keyInt)
 //we use int
 void NetworkOutput::sendKeyRelease(int keyInt)
 {
+    if ( ! client_.connected() )
+    {
+        return;
+    }
     Qt::Key key = static_cast<Qt::Key>(keyInt);
     qDebug() << "NetworkOutput: Sending key release: " << QKeySequence(key).toString();
 

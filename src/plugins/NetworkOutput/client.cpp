@@ -20,14 +20,7 @@ bool Client::sendMessage(Message& message)
 {
     QByteArray serializedMessage = message.serialize();
 
-    if (socket_.state() == QAbstractSocket::UnconnectedState)
-    {
-        qDebug().nospace() << "Connecting to the host: "
-                           << ip_.toStdString().c_str()
-                           << ":" <<  QString::number(port_).toStdString().c_str();
-        socket_.connectToHost(ip_, port_);
-        socket_.waitForConnected(MAX_DELAY);
-    }
+    connectToHost();
     if (socket_.state() != QAbstractSocket::ConnectedState)
     {
         displayError(socket_.error());
@@ -72,6 +65,19 @@ void Client::setIp(const QString& ip)
 {
     ip_ = ip;
 }
+
+bool Client::connectToHost()
+{
+    if (socket_.state() == QAbstractSocket::UnconnectedState)
+    {
+        qDebug().nospace() << "Connecting to the host: "
+                           << ip_.toStdString().c_str()
+                           << ":" <<  QString::number(port_).toStdString().c_str();
+        socket_.connectToHost(ip_, port_);
+        socket_.waitForConnected(MAX_DELAY);
+    }
+    return connected();
+}
 unsigned Client::port() const
 {
     return port_;
@@ -80,6 +86,11 @@ unsigned Client::port() const
 void Client::setPort(const unsigned& port)
 {
     port_ = port;
+}
+
+bool Client::connected() const
+{
+    return ( socket_.state() != QAbstractSocket::UnconnectedState );
 }
 
 

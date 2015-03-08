@@ -8,6 +8,9 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -std=c++0x
+QMAKE_CXX = g++-4.6
+QMAKE_CC = gcc-4.6
+LIBS += -B /usr/binutils2.22/bin
 
 contains(QMAKE_HOST.arch, arm): QMAKE_CXXFLAGS += -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp -O3 -fomit-frame-pointer -ffast-math
 

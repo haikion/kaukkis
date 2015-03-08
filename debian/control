@@ -4,7 +4,11 @@ Priority: optional
 Maintainer: Niko Häikiö <haikion@github>
 Build-Depends: debhelper7 (>= 7),
                libqt4-dev,
-               g++-4.6
+               g++-4.6,
+               binutils2.22,
+               libstdc++6,
+               libc6-dev,
+               libc6
 Standards-Version: 3.7.2
 
 Package: kaukkis

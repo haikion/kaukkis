@@ -16,10 +16,12 @@ public:
     bool sendMessage(Message& message);
     QString ip() const;
     void setIp(const QString& ip);
+    bool connectToHost();
 
     unsigned port() const;
     void setPort(const unsigned& port);
 
+    bool connected() const;
 private:
     static const QString DEFAULT_IP;
     static const unsigned DEFAULT_PORT;

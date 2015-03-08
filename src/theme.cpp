@@ -1,8 +1,11 @@
 #include <QDebug>
 #include <QtGlobal>
+#include <QFileInfo>
 #include "theme.h"
 
-const QString Theme::THEME_DIR = "themes";
+//Specifies possibel themes directories. Only one is used.
+//First valid one will be selected
+const std::vector<QString> Theme::THEME_DIRS = {"themes", "/usr/share/kaukkis/themes"};
 const QString Theme::RELEASED_FILE = "released.png";
 const QString Theme::PRESSED_FILE = "pressed.png";
 const QString Theme::BACKGROUND_FILE = "background.png";
@@ -39,15 +42,25 @@ std::map<ButtonType, ButtonTheme> Theme::buttonThemes() const
 //TODO: Implement theme chooser to allow multiple themes.
 void Theme::loadTheme()
 {
-    //Specifies  theme dir for this specific theme.
-    QString thisDir = THEME_DIR + "/" + name();
+    //Look for Themes directory. This is needed because program
+    //needs to load without installation and in different
+    //operating systems.
+    QString themeDir;
+    for (const QString& themesDir : THEME_DIRS)
+    {
+        if (QFileInfo(themesDir).exists())
+        {
+            themeDir = themesDir + "/" + name();
+            qDebug() << "Selected themes dir: " << themesDir;
+        }
+    }
     //Load background image
-    backgroundImage_.load(thisDir + "/" + "background.png");
+    backgroundImage_.load(themeDir + "/" + "background.png");
     //Load button images
     for (auto it = BUTTON_NAMES.begin(); it != BUTTON_NAMES.end(); ++it)
     {
         ButtonType bt = it->first;
-        QString buttonThemeDir = thisDir + "/" + it->second;
+        QString buttonThemeDir = themeDir + "/" + it->second;
         ButtonTheme newTheme;
         newTheme.buttonType = bt;
         newTheme.imagePressed = QPixmap(buttonThemeDir + "/" + PRESSED_FILE);
