@@ -23,7 +23,7 @@ void PluginDialog::show()
 {
     ui->listWidget->clear();
 
-    for (IRemoteOutput* output: parent_->remoteOutputs() )
+    for (IRemoteOutput* output : parent_->remoteOutputs() )
     {
         QListWidgetItem* item = new QListWidgetItem(ui->listWidget);
         item->setText(output->name());

@@ -42,8 +42,8 @@ public:
     void loadOutputPlugins();
     std::vector<ButtonAction> avaibleButtonActions() const;
 
-    std::list<IRemoteOutput*> remoteOutputs() const;
-    void setRemoteOutputs(const std::list<IRemoteOutput*>& remoteOutputs);
+    std::vector<IRemoteOutput*> remoteOutputs() const;
+    void setRemoteOutputs(const std::vector<IRemoteOutput*>& remoteOutputs);
 
 private slots:
     void useMode();
@@ -55,10 +55,11 @@ private slots:
 
 private:
     static const QString PLUGINS_DIR;
+    static const std::vector<QString> PLUGINS_DIRS;
 
     Ui::MainWindow* ui;
     PluginDialog* pluginsDialog_;
-    std::list<IRemoteOutput*> remoteOutputs_;
+    std::vector<IRemoteOutput*> remoteOutputs_;
 
     void setupHildonMenu();
     void addUseModeActions();

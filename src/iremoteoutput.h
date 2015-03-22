@@ -27,6 +27,6 @@ public:
 };
 
 
-Q_DECLARE_INTERFACE(IRemoteOutput, "org.kaukkis/1.0");
+Q_DECLARE_INTERFACE(IRemoteOutput, "org.kaukkis/1.0")
 
 #endif

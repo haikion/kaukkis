@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QtNetwork/QTcpSocket>
 #include <QMutex>
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "message.h"
 
 class Client : public QObject

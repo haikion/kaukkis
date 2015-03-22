@@ -5,20 +5,24 @@
 #include <QString>
 #include <QSignalMapper>
 #include <QDialog>
-#include "networkoutput_global.h"
-#include "iremoteoutput.h"
-#include "buttonaction.h"
+#include <QSettings>
+#include <QtCore/qplugin.h>
+//#include "networkoutput_global.h"
+#include "../../iremoteoutput.h"
+#include "../../buttonaction.h"
 #include "client.h"
 
 namespace Ui {
     class NetworkOutputDialog;
 }
 
-class NETWORKOUTPUTSHARED_EXPORT NetworkOutput : public QObject, public IRemoteOutput
+//class NETWORKOUTPUTSHARED_EXPORT NetworkOutput : public QObject, public IRemoteOutput
+class NetworkOutput : public QObject, IRemoteOutput
 {
 
     Q_OBJECT
     Q_INTERFACES(IRemoteOutput)
+//    Q_PLUGIN_METADATA(IID "org.kaukkis.NetworkOutput")
 
 public:
     NetworkOutput();
@@ -46,5 +50,6 @@ private:
     void saveSettings();
     bool loadSettings();
 };
+//Q_EXPORT_PLUGIN2(networkOutput, NetworkOutput)
 
 #endif // NETWORKOUTPUT_H

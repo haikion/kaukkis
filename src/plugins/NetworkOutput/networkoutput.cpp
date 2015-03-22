@@ -163,3 +163,5 @@ bool NetworkOutput::loadSettings()
     client_.setPort(settings_.value("port").toUInt());
     return true;
 }
+
+Q_EXPORT_PLUGIN2(networkOutput, NetworkOutput);
