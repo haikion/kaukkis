@@ -1,0 +1,12 @@
+#ifndef PLUGINSTUB_GLOBAL_H
+#define PLUGINSTUB_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(PLUGINSTUB_LIBRARY)
+#  define PLUGINSTUBSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define PLUGINSTUBSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PLUGINSTUB_GLOBAL_H

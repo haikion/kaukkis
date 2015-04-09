@@ -16,13 +16,11 @@ namespace Ui {
     class NetworkOutputDialog;
 }
 
-//class NETWORKOUTPUTSHARED_EXPORT NetworkOutput : public QObject, public IRemoteOutput
 class NetworkOutput : public QObject, IRemoteOutput
 {
 
     Q_OBJECT
     Q_INTERFACES(IRemoteOutput)
-//    Q_PLUGIN_METADATA(IID "org.kaukkis.NetworkOutput")
 
 public:
     NetworkOutput();
@@ -50,6 +48,5 @@ private:
     void saveSettings();
     bool loadSettings();
 };
-//Q_EXPORT_PLUGIN2(networkOutput, NetworkOutput)
 
 #endif // NETWORKOUTPUT_H

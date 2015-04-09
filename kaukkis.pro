@@ -8,15 +8,24 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -std=c++0x
-QMAKE_CXX = g++-4.6
-QMAKE_CC = gcc-4.6
-LIBS += -B /usr/binutils2.22/bin
-
+maemo5: QMAKE_CXX = g++-4.6
+maemo5: QMAKE_CC = gcc-4.6
+maemo5: LIBS += -B /usr/binutils2.22/bin
 contains(QMAKE_HOST.arch, arm): QMAKE_CXXFLAGS += -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp -O3 -fomit-frame-pointer -ffast-math
 
 INCLUDEPATH += src
 TARGET = kaukkis
 TEMPLATE = app
+
+release: DESTDIR = build/release
+debug:   DESTDIR = build/debug
+maemo5: DESTDIR = build/maemo5
+OBJECTS_DIR = $$DESTDIR
+MOC_DIR = $$DESTDIR
+RCC_DIR = $$DESTDIR
+UI_DIR = $$DESTDIR
+
+
 
 SOURCES += src/main.cpp\
     src/remote.cpp \
@@ -43,7 +52,6 @@ HEADERS  += \
     src/buttontype.h \
     src/newbuttondialog.h \
     src/plugins/NetworkOutput/networkoutput.h \
-    src/plugins/NetworkOutput/networkoutput_global.h \
     src/plugins/NetworkOutput/client.h \
     src/plugins/NetworkOutput/message.h \
     src/plugindialog.h \

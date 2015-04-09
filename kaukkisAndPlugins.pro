@@ -5,4 +5,8 @@ SUBDIRS	    = kaukkis \
 # Combine
 kaukkis.file = kaukkis.pro
 networkOutput.file = src/plugins/NetworkOutput/NetworkOutput.pro
-#INSTALLS += target sources
+DESTDIR = build
+OBJECTS_DIR = build
+MOC_DIR = build
+RCC_DIR = build
+UI_DIR = build
