@@ -2,4 +2,4 @@ build/maemo5/kaukkis usr/bin
 themes usr/share/kaukkis
 kaukkis.png usr/share/icons/hicolor/64x64/apps/
 kaukkis.desktop usr/share/applications/hildon
-build/maemo5/plugins/libNetworkOutput.so.1.0.0 /usr/lib/kaukkis/plugins
+build/maemo5/plugins/NetworkOutput/libNetworkOutput.so.1.0.0 /usr/lib/kaukkis/plugins/NetworkOutput

@@ -54,7 +54,6 @@ private slots:
     void landscapeMode();
 
 private:
-    static const QString PLUGINS_DIR;
     static const std::vector<QString> PLUGINS_DIRS;
 
     Ui::MainWindow* ui;

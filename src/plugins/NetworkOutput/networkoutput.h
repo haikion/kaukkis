@@ -7,7 +7,6 @@
 #include <QDialog>
 #include <QSettings>
 #include <QtCore/qplugin.h>
-//#include "networkoutput_global.h"
 #include "../../iremoteoutput.h"
 #include "../../buttonaction.h"
 #include "client.h"

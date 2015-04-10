@@ -8,10 +8,8 @@
 #include <set>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-//#include "plugins/NetworkOutput/networkoutput.h"
 
-const QString MainWindow::PLUGINS_DIR = "plugins";
-const std::vector<QString> MainWindow::PLUGINS_DIRS = {"/usr/lib/kaukkis/plugins", "src/plugins"};
+const std::vector<QString> MainWindow::PLUGINS_DIRS = {"/usr/lib/kaukkis/plugins", "plugins"};
 
 //Doesn't compile without this even with "std::" additions... go figure
 using namespace std;
@@ -149,7 +147,7 @@ void MainWindow::loadOutputPlugins()
             qDebug() << "MainWindow: Unable to open directory: " << pluginsDir;
             continue;
         }
-        qDebug() << "MainWindow: Opening directory: " << PLUGINS_DIR;
+        qDebug() << "MainWindow: Opening directory: " << pluginsDir;
         //Iterate through plugin directories
         for (const QString& pluginDir : fileBrowser.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
         {

@@ -5,11 +5,16 @@
 #-------------------------------------------------
 
 QMAKE_CXXFLAGS += -std=c++0x
+maemo5: QMAKE_CXXFLAGS += -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp -O3 -fomit-frame-pointer -ffast-math
 
 QT       += network widgets
 
 TARGET = NetworkOutput
 TEMPLATE = lib
+
+maemo5: QMAKE_CXX = g++-4.6
+maemo5: QMAKE_CC = gcc-4.6
+maemo5: LIBS += -B /usr/binutils2.22/bin
 
 #Builds files in a directory where a kaukkis excutable
 #can find them.
@@ -24,12 +29,13 @@ UI_DIR = $$DESTDIR
 
 DEFINES += NETWORKOUTPUT_LIBRARY
 
-SOURCES += networkoutput.cpp
+SOURCES += networkoutput.cpp \
+    client.cpp
 
-HEADERS += networkoutput.h\
-        networkoutput_global.h \
-    ../kaukkis/iremoteoutput.h \
-    ../kaukkis/buttonaction.h
+HEADERS += networkoutput.h \
+    ../../iremoteoutput.h \
+    ../../buttonaction.h \
+    client.h
 
 unix {
     target.path = /usr/lib
