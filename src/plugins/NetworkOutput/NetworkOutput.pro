@@ -30,12 +30,14 @@ UI_DIR = $$DESTDIR
 DEFINES += NETWORKOUTPUT_LIBRARY
 
 SOURCES += networkoutput.cpp \
-    client.cpp
+    client.cpp \
+    message.cpp
 
 HEADERS += networkoutput.h \
     ../../iremoteoutput.h \
     ../../buttonaction.h \
-    client.h
+    client.h \
+    message.h
 
 unix {
     target.path = /usr/lib
