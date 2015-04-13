@@ -1,1 +1,2 @@
-dpkg-buildpackage -rfakeroot -sa -S -I.git -I.pc -Icreate_maemo_src.sh -Icreate_deb.sh -I.gitignore -Ikaukkis.pro.user
+./clean.sh
+dpkg-buildpackage -rfakeroot -sa -S -I.git -I.pc -I.gitignore -Iclean -I*pro.user

@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QMAKE_CXXFLAGS += -std=c++0x
-maemo5: QMAKE_CXXFLAGS += -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp -O3 -fomit-frame-pointer -ffast-math
+maemo5: QMAKE_CXXFLAGS += -mcpu=cortex-a8 -mfpu=neon -mfloat-abi=softfp -O2 -fomit-frame-pointer -ffast-math
 
 QT       += network widgets
 

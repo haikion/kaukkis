@@ -11,7 +11,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 maemo5: QMAKE_CXX = g++-4.6
 maemo5: QMAKE_CC = gcc-4.6
 maemo5: LIBS += -B /usr/binutils2.22/bin
-contains(QMAKE_HOST.arch, arm): QMAKE_CXXFLAGS += -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp -O3 -fomit-frame-pointer -ffast-math
+maemo5: QMAKE_CXXFLAGS += -mcpu=cortex-a8 -mfpu=neon -mfloat-abi=softfp -O2 -fomit-frame-pointer -ffast-math
 
 INCLUDEPATH += src
 TARGET = kaukkis
