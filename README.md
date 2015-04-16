@@ -1,7 +1,7 @@
-# Kaukkis
+﻿# Kaukkis
 Kaukkis is a remote controller application for Maemo
-platform. It supports output plugins and in the future will support theme
-plugins. Currently there is only one output plugin
+platform. It supports output plug-ins and in the future will support theme
+plug-ins. Currently there is only one output plug-in
 to control X-window-system through a network.
 
 ## Compilation
@@ -26,11 +26,11 @@ qmake kaukkisAndPlugins.pro
 make
 ```
 ##Output plugins
-Output plugins define functionality for button presses and releases. Button action defines QAction to be performed on button press and release. Users may choose which button actions are used for which button.
+Output plug-ins define functionality for button presses and releases. Button action defines QAction to be performed on button press and release. Users may choose which button actions are used for which button.
 ###Development
-Kaukkis uses QT4's plugin framework. Plugin has to satisfy IRemoteOutput inteface. Kaukkis will search for plugin directories in following directories:
-* <excutable location>/plugins
+Kaukkis uses QT4's plug-in framework. Plug-in has to satisfy IRemoteOutput interface. Kaukkis will search for plug-in directories in following directories:
+* [excutable location]/plugins
 * /usr/lib/kaukkis/plugins
 
-###Plugin Stub
-Plugin stub has been created under src/plugins/PluginStub. This stub can be used as a base for a new plugin. It should compile and load as a kaukkis plugin when placed in a correct directory.
+###Plug-in Stub
+Plug-in stub has been created under src/plugins/PluginStub. This stub can be used as a base for a new plug-in. It should compile and load as a Kaukkis plug-in when placed in a correct directory.
