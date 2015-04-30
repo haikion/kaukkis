@@ -34,11 +34,9 @@ SOURCES += src/main.cpp\
     src/theme.cpp \
     src/mainwindow.cpp \
     src/newbuttondialog.cpp \
-    src/plugins/NetworkOutput/networkoutput.cpp \
-    src/plugins/NetworkOutput/client.cpp \
-    src/plugins/NetworkOutput/message.cpp \
     src/plugindialog.cpp \
-    src/mobileview.cpp
+    src/mobileview.cpp \
+    src/themedialog.cpp
 
 HEADERS  += \
     src/theme.h \
@@ -51,18 +49,16 @@ HEADERS  += \
     src/mainwindow.h \
     src/buttontype.h \
     src/newbuttondialog.h \
-    src/plugins/NetworkOutput/networkoutput.h \
-    src/plugins/NetworkOutput/client.h \
-    src/plugins/NetworkOutput/message.h \
     src/plugindialog.h \
-    src/mobileview.h
+    src/mobileview.h \
+    src/themedialog.h
 
 FORMS    += \
     src/mainwindow.ui \
     src/newbuttondialog.ui \
     src/buttondialog.ui \
     src/plugindialog.ui \
-    src/plugins/NetworkOutput/networkoutputdialog.ui
+    src/themedialog.ui
 
 DISTFILES +=
 
