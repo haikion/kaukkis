@@ -26,7 +26,7 @@ public:
     //Activates editing mode.
     void editMode();
     //Sets theme for the remote.
-    void setTheme(std::unique_ptr<Theme> theme);
+    void setTheme(Theme* theme);
     //Activates normal mode.
     void useMode();
     std::vector<ButtonAction> availableButtonsActions() const;
@@ -45,7 +45,7 @@ private:
 
     QString name_;
     std::unique_ptr<QSettings> settings_;
-    std::unique_ptr<Theme> theme_;
+    Theme* theme_;
     std::unique_ptr<NewButtonDialog> newButtonDialog_;
     std::vector<ButtonAction> avaibleButtonActions_;
     std::vector<Button*> buttons();

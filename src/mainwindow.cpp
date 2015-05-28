@@ -19,13 +19,15 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    pluginsDialog_(new PluginDialog(this))
+    pluginsDialog_(new PluginDialog(this)),
+    themeDialog_(new ThemeDialog(this))
 {
     ui->setupUi(this);
 
     loadOutputPlugins();
     //TODO: Choose first one from all themes
     Remote* remote = new Remote("default", this);
+    themeDialog_->setActiveRemote(remote);
     ui->graphicsView->setScene(remote);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
     setupHildonMenu();
@@ -107,6 +109,7 @@ void MainWindow::addUseModeActions()
     ui->menubar->removeAction(ui->actionAddButton);
     ui->menubar->removeAction(ui->actionSave);
     ui->menubar->removeAction(ui->actionPlugins);
+    ui->menubar->removeAction(ui->actionThemes);
 }
 
 void MainWindow::useMode()
@@ -122,6 +125,7 @@ void MainWindow::editMode()
     ui->menubar->addAction(ui->actionAddButton);
     ui->menubar->addAction(ui->actionSave);
     ui->menubar->addAction(ui->actionPlugins);
+    ui->menubar->addAction(ui->actionThemes);
     activeRemote()->editMode();
 }
 
@@ -218,6 +222,7 @@ void MainWindow::setupHildonMenu()
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
     connect(ui->actionAutoOrientation, SIGNAL(triggered()), this, SLOT(autoOrientation()));
     connect(ui->actionPlugins, SIGNAL(triggered()), pluginsDialog_, SLOT(show()));
+    connect(ui->actionThemes, SIGNAL(triggered()), themeDialog_, SLOT(show()));
     //Use mode is the default mode
     addUseModeActions();
 }

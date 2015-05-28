@@ -58,9 +58,13 @@ void Remote::editMode( )
 
 
 //Sets theme for the remote.
-void Remote::setTheme(std::unique_ptr<Theme> theme)
+void Remote::setTheme(Theme* theme)
 {
-    theme_ = std::move(theme);
+    theme_ = theme;
+    for (Button* button : buttons())
+    {
+        button->setTheme(theme_->buttonTheme(button->buttonType()));
+    }
 }
 
 //Activates normal mode.
@@ -101,8 +105,8 @@ void Remote::loadSettings( )
     }
 
     QString themeName = settings_->value("theme").toString();
-    unique_ptr<Theme> newTheme = std::unique_ptr<Theme>(new Theme(themeName));
-    setTheme(move(newTheme));
+    //unique_ptr<Theme> newTheme = std::unique_ptr<Theme>(new Theme(themeName));
+    setTheme(new Theme(themeName));
 
     //Load all buttons for the remote.
     for (QString buttonSettings : settings_->childGroups())

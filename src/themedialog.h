@@ -1,9 +1,11 @@
 #ifndef THEMEDIALOG_H
 #define THEMEDIALOG_H
 
-#include <QDialog>
-#include <src/theme.h>
 #include <vector>
+#include <QDialog>
+#include <QListWidgetItem>
+#include <src/theme.h>
+#include <src/remote.h>
 
 namespace Ui {
 class ThemeDialog;
@@ -17,9 +19,15 @@ public:
     explicit ThemeDialog(QWidget *parent = 0);
     ~ThemeDialog();
 
+    void setActiveRemote(Remote* remote);
+
+private slots:
+    void setTheme(QListWidgetItem* item);
+
 private:
     Ui::ThemeDialog *ui;
-    std::vector<Theme*> themes;
+    Remote* activeRemote_;
+
     static const std::vector<QString> THEMES_DIRS;
 
     void loadThemes();

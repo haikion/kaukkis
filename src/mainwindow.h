@@ -9,6 +9,7 @@
 #include "remote.h"
 #include "iremoteoutput.h"
 #include "plugindialog.h"
+#include "themedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -58,6 +59,7 @@ private:
 
     Ui::MainWindow* ui;
     PluginDialog* pluginsDialog_;
+    ThemeDialog* themeDialog_;
     std::vector<IRemoteOutput*> remoteOutputs_;
 
     void setupHildonMenu();

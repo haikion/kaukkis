@@ -2,6 +2,7 @@
 #include "ui_themedialog.h"
 #include <QDir>
 #include <QDebug>
+#include <memory>
 
 using namespace std;
 
@@ -13,12 +14,28 @@ ThemeDialog::ThemeDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    loadThemes();
+    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(setTheme(QListWidgetItem*)));
 }
 
 ThemeDialog::~ThemeDialog()
 {
     delete ui;
 }
+
+void ThemeDialog::setActiveRemote(Remote* remote)
+{
+    activeRemote_ = remote;
+}
+
+void ThemeDialog::setTheme(QListWidgetItem* item)
+{
+    Theme* selectedTheme = (Theme*) item->data(Qt::UserRole).value<void*>();
+    qDebug() << "ThemeDialog: Setting theme: " << selectedTheme->name();
+    activeRemote_->setTheme(selectedTheme);
+    close();
+}
+
 
 void ThemeDialog::loadThemes()
 {
@@ -33,7 +50,7 @@ void ThemeDialog::loadThemes()
             qDebug() << "ThemeDialog: Unable to open directory: " << themesDir;
             continue;
         }
-        //Iterate through theme directories
+        //Iterate through theme directoriesF
         for (const QString& themeDir : fileBrowser.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
         {
             QDir fileBrowser2 = fileBrowser;
@@ -42,7 +59,10 @@ void ThemeDialog::loadThemes()
             qDebug() << "ThemeDialog: new theme found: " << themeDir;
             Theme* newTheme = new Theme(themeDir);
             //TODO: Check if theme was able to load
-            themes.push_back(newTheme);
+            QListWidgetItem* item = new QListWidgetItem(ui->listWidget);
+            item->setText(newTheme->name());
+            item->setData(Qt::UserRole, qVariantFromValue((void*) newTheme));
+            ui->listWidget->addItem(item);
         }
     }
 }
