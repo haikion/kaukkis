@@ -10,7 +10,6 @@
 #include "buttondialog.h"
 #include "buttonaction.h"
 
-//Fixme: Doesn't with the parent window.
 ButtonDialog::ButtonDialog(Button* buttonParent, QWidget* widgetParent):
     QDialog(widgetParent),
     ui(new Ui::ButtonDialog),

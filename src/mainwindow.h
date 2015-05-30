@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <vector>
-#include <memory>
 #include <QGraphicsView>
 #include <QMainWindow>
 #include <QSettings>
@@ -42,9 +41,7 @@ public:
     Remote* activeRemote() const;
     void loadOutputPlugins();
     std::vector<ButtonAction> avaibleButtonActions() const;
-
     std::vector<IRemoteOutput*> remoteOutputs() const;
-    void setRemoteOutputs(const std::vector<IRemoteOutput*>& remoteOutputs);
 
 private slots:
     void useMode();
@@ -60,6 +57,8 @@ private:
     Ui::MainWindow* ui;
     PluginDialog* pluginsDialog_;
     ThemeDialog* themeDialog_;
+    //Use of unique_ptr causes double free error in destructor.
+    //std::vector<std::unique_ptr<IRemoteOutput>> remoteOutputs_;
     std::vector<IRemoteOutput*> remoteOutputs_;
 
     void setupHildonMenu();

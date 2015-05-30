@@ -1,4 +1,3 @@
-#include <memory>
 #include <QMessageBox>
 #include <QDir>
 #include <QPluginLoader>
@@ -11,11 +10,7 @@
 
 const std::vector<QString> MainWindow::PLUGINS_DIRS = {"/usr/lib/kaukkis/plugins", "plugins"};
 
-//Doesn't compile without this even with "std::" additions... go figure
-using namespace std;
 //FIXME: IconView in maemo
-//FIXME: Portrait->landscape buttons get lost
-//TODO: Detect keyboard out
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -94,13 +89,13 @@ void MainWindow::landscapeMode()
 std::vector<IRemoteOutput*> MainWindow::remoteOutputs() const
 {
     return remoteOutputs_;
+    //std::vector<IRemoteOutput*> rVal;
+    //for (const auto& ptr : remoteOutputs2_)
+    //{
+    //    rVal.push_back(ptr.get());
+    //}
+    //return rVal;
 }
-
-void MainWindow::setRemoteOutputs(const std::vector<IRemoteOutput*>& remoteOutputs)
-{
-    remoteOutputs_ = remoteOutputs;
-}
-
 
 void MainWindow::addUseModeActions()
 {
@@ -174,6 +169,7 @@ void MainWindow::loadOutputPlugins()
                         if (rVal.second)
                         {
                             qDebug() << "MainWindow: Loaded " << newRemoteOutput->name() << " plugin.";
+                            //remoteOutputs2_.push_back(std::unique_ptr<IRemoteOutput>(newRemoteOutput));
                             remoteOutputs_.push_back(newRemoteOutput);
                         }
                         else

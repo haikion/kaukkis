@@ -20,6 +20,13 @@ ThemeDialog::ThemeDialog(QWidget *parent) :
 
 ThemeDialog::~ThemeDialog()
 {
+    while (ui->listWidget->count() > 0)
+    {
+        QListWidgetItem* item = ui->listWidget->takeItem(0);
+        Theme* theme = (Theme*) item->data(Qt::UserRole).value<void*>();
+        delete theme;
+        delete item;
+    }
     delete ui;
 }
 
