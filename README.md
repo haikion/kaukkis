@@ -1,8 +1,6 @@
-﻿# Kaukkis
-Kaukkis is a remote controller application for Maemo
-platform. It supports output plug-ins and in the future will support theme
-plug-ins. Currently there is only one output plug-in
-to control X-window-system through a network.
+﻿
+# Kaukkis
+Kaukkis is a remote controller application for Maemo platform. It supports output plug-ins and theme plug-ins. It comes with a output plug-in to control X-window-system through a network.
 
 ## Compilation
 ###Linux
@@ -44,7 +42,7 @@ Kaukkis supports third party themes. Themes are defined as a series of button im
 In order to develop a new theme, one simply needs to create images for all of the buttons. Kaukkis uses the theme directory name as a name of the plugin. To get an idea of the directory structure of the theme please obverse the existing themes.
 
 ##Credits
-Programming: Niko Häikiö (haikion@github)
-Kaukkis uses theme files from the Irreco project. These themes have been developed by following persons.
-Modern (Kaukkis default theme):  Miguel Peres
-White: Teemu Hirvonen 
+Programming: Niko Häikiö (haikion@github) </br>
+Kaukkis uses theme files from the Irreco project. These themes have been developed by following persons: </br>
+* Modern (Kaukkis default theme): Miguel Peres 
+* White: Teemu Hirvonen 
