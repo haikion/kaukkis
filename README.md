@@ -34,3 +34,17 @@ Kaukkis uses QT4's plug-in framework. Plug-in has to satisfy IRemoteOutput inter
 
 ###Plug-in Stub
 Plug-in stub has been created under src/plugins/PluginStub. This stub can be used as a base for a new plug-in. It should compile and load as a Kaukkis plug-in when placed in a correct directory.
+
+##Themes
+Kaukkis supports third party themes. Themes are defined as a series of button images. which are stored in following directories:
+* [excutable location]/themes
+* /usr/share/kaukkis/themes
+
+###Development
+In order to develop a new theme, one simply needs to create images for all of the buttons. Kaukkis uses the theme directory name as a name of the plugin. To get an idea of the directory structure of the theme please obverse the existing themes.
+
+##Credits
+Programming: Niko Häikiö (haikion@github)
+Kaukkis uses theme files from the Irreco project. These themes have been developed by following persons.
+Modern (Kaukkis default theme):  Miguel Peres
+White: Teemu Hirvonen 
